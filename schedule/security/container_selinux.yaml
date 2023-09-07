@@ -9,10 +9,6 @@ schedule:
 conditional_schedule:
     boot:
         DISTRI:
-            alp:
-                - microos/disk_boot
-                - transactional/host_config
-                - transactional/enable_selinux
             sle:
                 - installation/bootloader_start
                 - boot/boot_to_desktop

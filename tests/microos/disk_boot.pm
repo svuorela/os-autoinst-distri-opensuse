@@ -28,9 +28,6 @@ sub run {
     } else {
         shift->wait_boot(bootloader_time => 300);
     }
-    microos_login;
-    # Avoid uploading logs in multimachine tests as no ip address is currently assigned to the interface
-    record_kernel_audit_messages(log_upload => 1) unless (get_var('NICTYPE') eq 'tap');
 }
 
 sub test_flags {

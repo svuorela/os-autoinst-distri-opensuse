@@ -1,0 +1,15 @@
+name: container_selinux
+description: >
+    This is for container-selinux test on ALP
+schedule:
+    - '{{boot}}'
+    - security/selinux/selinux_setup
+    - security/selinux/sestatus
+    - security/selinux/container_selinux
+conditional_schedule:
+    boot:
+        ENCRYPTED_IMAGE:
+            0:
+                - microos/disk_boot
+            1:
+                - jeos/firstrun

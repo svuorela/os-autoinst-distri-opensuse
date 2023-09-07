@@ -188,6 +188,20 @@ sub run {
         send_key 'n';
     }
 
+    if (is_alp) {
+        # Select FDE with pass and tpm
+        assert_screen "alp-fde-pass-tpm";
+        send_key "ret";
+        assert_screen "alp-fde-newluks";
+        type_string "luksrecoverypwd";
+        send_key "ret";
+        wait_still_screen 2;
+        type_string "luksrecoverypwd";
+        send_key "ret";
+        # Disk encryption is gonna take time. Once this is done we can proceed with login.
+        wait_still_screen 5;
+    }
+
     # Our current Hyper-V host and it's spindles are quite slow. Especially
     # when there are more jobs running concurrently. We need to wait for
     # various disk optimizations and snapshot enablement to land.
